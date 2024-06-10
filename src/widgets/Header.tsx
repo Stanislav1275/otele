@@ -69,6 +69,12 @@ export function Header() {
                             Заказы
                         </Link>
                     </Button>
+                    <Button asChild>
+                        <Link className="hover:underline" to="/users">
+                            Юзеры
+                        </Link>
+                    </Button>
+
                     {/*<HeaderNavigation />*/}
                 </div>
 

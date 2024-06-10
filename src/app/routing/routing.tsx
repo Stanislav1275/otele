@@ -4,6 +4,7 @@ import {FabricsPage} from "@/pages/fabrics/fabrics-page.tsx";
 import {ModelsPage} from "@/pages/fabrics/models-page.tsx";
 import {OrdersPage} from "@/pages/fabrics/orders-page.tsx";
 import {PrivateRouter} from "@/app/providers/PrivateRouter.tsx";
+import {UsersPage} from "@/pages/fabrics/users-page.tsx";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: 'orders',
                 element: <PrivateRouter><OrdersPage/></PrivateRouter>
+            },
+            {
+                path: 'users',
+                element: <PrivateRouter><UsersPage/></PrivateRouter>
             }
         ]
     },
