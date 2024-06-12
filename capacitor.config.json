@@ -1,0 +1,6 @@
+{
+  "appId": "your.app.id",
+  "appName": "Your App Name",
+  "bundledWebRuntime": false,
+  "npmClient": "npm"
+}
