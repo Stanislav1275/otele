@@ -3,5 +3,5 @@
   "appName": "Your App Name",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": ".dist"
+  "webDir": "./dist"
 }
