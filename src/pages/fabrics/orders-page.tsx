@@ -74,12 +74,17 @@ export const OrdersPage = () => {
         isPending: isUpdatePending,
         isError: isUpdateError
     } = useUpdateOrder()
-    const update = (id: number): SubmitHandler<z.infer<typeof updateResolver>> => (data) => {
+    const update = (id: number, date: Date): SubmitHandler<z.infer<typeof updateResolver>> => (data) => {
+        if (data.completion_date && data.completion_date < date) {
+            toast({variant: 'destructive', description: 'completion_date не может быть раньше order_date'})
+            return;
+        }
         const newData = {
             ...data,
             id,
             completion_date: data?.completion_date?.toISOString()?.slice(0, 19) ?? null
         } satisfies UpdateOrderRequestSchema & { id: number };
+
         updateOrder(newData)
     }
     const {control, handleSubmit} = methods;
@@ -339,7 +344,7 @@ const UpdateForm = ({update, order, isUpdatePending}) => {
     })
     const {control: upControl, handleSubmit: upHandleSubmit, reset} = upMethods;
     return (
-        <form onSubmit={upHandleSubmit(update(order.id))}>
+        <form onSubmit={upHandleSubmit(update(order.id, new Date(order.order_date)))}>
             <Form {...upMethods}>
                 <FormField
                     control={upControl}
